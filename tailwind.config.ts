@@ -9,7 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        nunito: ["var(--font-nunito)"],
         "rock-salt": ["var(--font-rock-salt)"],
+        "indie-flower": ["var(--font-indie-flower)"],
       },
     },
   },

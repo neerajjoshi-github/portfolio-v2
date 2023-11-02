@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Rock_Salt } from "next/font/google";
+import { Rock_Salt, Cinzel_Decorative, Sometype_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Sometype_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-nunito",
+});
+
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-rock-salt",
+});
+
+const indieFlower = Cinzel_Decorative({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-indie-flower",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +32,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${rockSalt.variable}`}>
+      <body
+        className={`${nunito.className} ${rockSalt.variable} ${indieFlower.variable}`}
+      >
         {children}
       </body>
     </html>
