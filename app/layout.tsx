@@ -1,23 +1,29 @@
 import type { Metadata } from "next";
-import { Rock_Salt, Cinzel_Decorative, Sometype_Mono } from "next/font/google";
 import "./globals.css";
+import { Rock_Salt, Bungee, Ubuntu, Rubik } from "next/font/google";
 
-const nunito = Sometype_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-nunito",
-});
-
-const rockSalt = Rock_Salt({
-  subsets: ["latin"],
+const rockSlat = Rock_Salt({
   weight: "400",
+  subsets: ["latin"],
   variable: "--font-rock-salt",
 });
 
-const indieFlower = Cinzel_Decorative({
+const cinzelDecorative = Bungee({
+  weight: ["400"],
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-indie-flower",
+  variable: "--font-cinzel-decorative",
+});
+
+const ubuntu = Ubuntu({
+  weight: ["500"],
+  subsets: ["latin"],
+  variable: "--font-sometype-mono",
+});
+
+const rubik = Rubik({
+  weight: ["700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-rubik",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunito.className} ${rockSalt.variable} ${indieFlower.variable}`}
+        className={`${rockSlat.variable} ${cinzelDecorative.variable} ${rubik.variable} ${ubuntu.className}`}
       >
         {children}
       </body>

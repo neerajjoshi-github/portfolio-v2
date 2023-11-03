@@ -8,10 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#ff66c4",
+      },
       fontFamily: {
-        nunito: ["var(--font-nunito)"],
-        "rock-salt": ["var(--font-rock-salt)"],
-        "indie-flower": ["var(--font-indie-flower)"],
+        logo: ["var(--font-rock-salt)"],
+        heroText: ["var(--font-cinzel-decorative)"],
+        sectionHeading: ["var(--font-rubik)"],
+        text: ["var(--font-sometype-mono)"],
       },
     },
   },

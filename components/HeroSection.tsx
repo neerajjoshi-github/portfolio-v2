@@ -2,11 +2,14 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="h-[calc(100vh-64px)] w-full flex flex-col gap-3 justify-center px-6">
-      <h2 className="text-2xl lg:text-3xl font-semibold font-indie-flower mb-6">
+    <section
+      id="hero"
+      className="h-[calc(100vh-64px)] w-full flex flex-col gap-3 justify-center px-6"
+    >
+      <h2 className="text-2xl lg:text-3xl font-semibold font-heroText mb-6">
         Hello, I&rsquo;m
       </h2>
-      <p className="text-3xl sm:text-5xl md:text-7xl lg:text-[5.2rem] leading-none font-bold font-indie-flower">
+      <p className="text-3xl sm:text-5xl md:text-7xl lg:text-[5.8rem] leading-none font-bold font-heroText">
         <span>Neeraj Joshi</span>, <br /> and I bring web creations to life.
       </p>
       <p className="text-xs sm:text-sm lg:text-base pr-0 sm:pr-24 font-medium">

@@ -6,7 +6,7 @@ import MobileMenu from "./MobileMenu";
 export const navLinks = [
   {
     label: "Home",
-    link: "/",
+    link: "#hero",
   },
   {
     label: "About",
@@ -25,8 +25,8 @@ export const navLinks = [
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
-    <header className="sticky top-0 left-0 backdrop-blur-md h-16 w-full border-b border-zinc-300 px-6 sm:px-10 md:px-16 flex items-center justify-between">
-      <h1 className="font-rock-salt text-lg">neeraj</h1>
+    <header className="sticky top-0 left-0 z-50 backdrop-blur-md h-16 w-full border-b border-zinc-300 px-6 sm:px-10 md:px-16 flex items-center justify-between">
+      <h1 className="font-logo text-lg">neeraj</h1>
       <ul className="hidden md:flex items-center gap-6">
         {navLinks.map((item) => {
           return (
