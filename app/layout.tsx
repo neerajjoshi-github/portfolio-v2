@@ -15,7 +15,7 @@ const cinzelDecorative = Bungee({
 });
 
 const ubuntu = Ubuntu({
-  weight: ["500"],
+  weight: ["400"],
   subsets: ["latin"],
   variable: "--font-sometype-mono",
 });

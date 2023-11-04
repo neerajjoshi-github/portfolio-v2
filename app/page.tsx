@@ -2,6 +2,7 @@
 import AboutMeSection from "@/components/AboutMeSection";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -18,10 +19,10 @@ const Home = () => {
     <>
       <Header />
       <div className="w-full flex flex-col items-center">
-        <div className="w-full max-w-[1080px] flex flex-col">
+        <div className="w-full max-w-[1200px] flex flex-col">
           <HeroSection />
           <AboutMeSection />
-          <div className="w-full h-screen"></div>
+          <ProjectsSection />
         </div>
       </div>
     </>

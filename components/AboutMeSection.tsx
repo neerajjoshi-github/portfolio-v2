@@ -5,7 +5,7 @@ import ProfileImage from "../public/images/profile.jpg";
 import JavascriptLogo from "../public/icons/javascript.svg";
 import ReactLogo from "../public/icons/react.svg";
 import NextjsLogo from "../public/icons/nextjs.svg";
-import NodejsLogo from "../public/icons/node-js.svg";
+import NodejsLogo from "../public/icons/nodejs.svg";
 import TailwindcssLogo from "../public/icons/tailwindcss.svg";
 import TypescriptLogo from "../public/icons/typescript.svg";
 import MongodbLogo from "../public/icons/mongodb.svg";
@@ -14,6 +14,8 @@ import FirebaseLogo from "../public/icons/firebase.svg";
 // Flowers
 import Flower1 from "../public/flowers/1.svg";
 import Flower2 from "../public/flowers/2.svg";
+
+import HeadingBackground from "../public/background/2.svg";
 
 const technologies = [
   { id: 1, name: "Javascript", icon: JavascriptLogo },
@@ -32,8 +34,15 @@ const AboutMeSection = () => {
       id="about"
       className="min-h-[calc(100vh-64px)] px-6 w-full flex flex-col gap-4"
     >
-      <h2 className="ml-auto text-5xl md:text-8xl mb-2 font-black uppercase font-sectionHeading">
+      <h2 className="ml-auto group relative text-5xl md:text-8xl mb-2 font-black uppercase font-sectionHeading">
         About Me
+        <Image
+          src={HeadingBackground}
+          width={140}
+          height={140}
+          alt="Heading Background"
+          className="absolute -top-4 right-1/2 z-[-1] group-hover:rotate-180 transition duration-1000"
+        />
       </h2>
       <div className="flex flex-col lg:flex-row items-center gap-8">
         <div className="w-full sm:w-fit h-fit relative flex flex-col gap-10 group">
@@ -92,14 +101,12 @@ const AboutMeSection = () => {
           {technologies.map((tech) => {
             return (
               <div key={tech.id} className="flex items-center gap-2">
-                <div className="w-5 h-5 inline-block rounded-full">
-                  <Image
-                    src={tech.icon}
-                    width={20}
-                    height={20}
-                    alt={`${tech.icon} Logo`}
-                  />
-                </div>
+                <Image
+                  src={tech.icon}
+                  width={24}
+                  height={24}
+                  alt={`${tech.icon} Logo`}
+                />
                 <span>{tech.name}</span>
               </div>
             );
