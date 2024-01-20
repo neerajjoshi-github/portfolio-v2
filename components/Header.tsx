@@ -5,10 +5,6 @@ import MobileMenu from "./MobileMenu";
 
 export const navLinks = [
   {
-    label: "Home",
-    link: "#hero",
-  },
-  {
     label: "About",
     link: "#about",
   },
