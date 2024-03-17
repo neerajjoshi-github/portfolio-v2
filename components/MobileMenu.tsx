@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const MobileMenu = () => {
   return (
-    <div className="fixed z-[1] inset-0 h-screen bg-white text-black flex items-center justify-center">
+    <div className="fixed md:hidden z-[1] inset-0 h-screen bg-white text-black flex items-center justify-center">
       <div>
         <ul className="flex flex-col items-center gap-8">
           {navLinks.map((item) => {

@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect";
 
 // Tech Logos
 import JavascriptLogo from "../public/icons/javascript.svg";
@@ -19,6 +18,7 @@ import Flower1 from "../public/flowers/1.svg";
 import Flower2 from "../public/flowers/2.svg";
 
 import HeadingBackground from "../public/background/2.svg";
+import { useGSAP } from "@gsap/react";
 
 const technologies = [
   { id: 1, name: "Javascript", icon: JavascriptLogo },
@@ -39,9 +39,9 @@ const AboutMeSection = () => {
   const aboutSection = useRef<HTMLElement | null>(null);
   const headingBackground = useRef(null);
 
-  useIsomorphicLayoutEffect(() => {
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    let ctx = gsap.context(() => {
+    gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: aboutSection.current,
@@ -55,24 +55,20 @@ const AboutMeSection = () => {
       })
         .to(".highlighted-text span", {
           color: "#ff66c4",
-          stagger: 0.02,
+          stagger: 0.04,
           ease: "sine.out",
         })
         .to(
           ".highlighted-text2 span",
           {
             color: "#ffda7b",
-            stagger: 0.02,
+            stagger: 0.04,
             ease: "sine.out",
           },
           "-=0.5"
         );
     }, aboutSection);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
+  });
 
   const mouseMoveHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (!aboutSection.current) return;
@@ -80,7 +76,6 @@ const AboutMeSection = () => {
     const x = (e.clientX - rect.left) / aboutSection.current.clientWidth;
     const y = (e.clientY - rect.top) / aboutSection.current.clientHeight;
 
-    console.log({ x, y });
     gsap.to(headingBackground.current, {
       top: y * 20,
       left: x * 80,
@@ -90,7 +85,7 @@ const AboutMeSection = () => {
     <section
       ref={aboutSection}
       id="about"
-      className="py-32 px-6 w-full flex flex-col gap-4 relative"
+      className="py-20 px-6 w-full flex flex-col gap-4 relative"
       onMouseMove={mouseMoveHandler}
     >
       <h2 className="ml-auto group relative text-5xl md:text-8xl mb-2 font-black uppercase font-sectionHeading">
@@ -165,7 +160,7 @@ const AboutMeSection = () => {
       </div>
       <div className="flex flex-col gap-3">
         <p className="text-zinc-300 text-base sm:text-lg font-semibold">
-          Technologies I am well-acquainted with
+          Technologies I am acquainted with
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-1 text-zinc-300">
           {technologies.map((tech) => {

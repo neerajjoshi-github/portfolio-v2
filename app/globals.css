@@ -4,15 +4,16 @@
 
 body {
   color: white;
+  background-color: #050119;
 }
 
 .background {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
-/* {
-  scroll-padding-top: 64px;
-} */
+html {
+  scroll-padding-top: -56px;
+}
 
 /* Lenis Scroll Css */
 
@@ -89,19 +90,54 @@ html.lenis {
 }
 
 .gradient-animation {
-  animation: gradient 5s linear infinite;
-  background-size: 200%;
-  background-image: linear-gradient(to bottom right, teal, rgb(133, 133, 252));
+  animation: filter-animation 5s linear infinite;
+  background: radial-gradient(ellipse at center, #1e5799 0%, #7db9e8 100%);
+  -webkit-animation: filter-animation 8s infinite;
 }
 
-@keyframes gradient {
-  0%,
-  100% {
-    background-position: 0;
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: hue-rotate(0deg) blur(15px);
   }
 
-  25%,
-  75% {
-    background-position: 200%;
+  50% {
+    -webkit-filter: hue-rotate(180deg) blur(15px);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(0deg) blur(15px);
+  }
+}
+
+@keyframes filter-animation {
+  0% {
+    filter: hue-rotate(0deg) blur(15px);
+  }
+
+  50% {
+    filter: hue-rotate(180deg) blur(15px);
+  }
+
+  100% {
+    filter: hue-rotate(0deg) blur(15px);
+  }
+}
+
+.planet-animation {
+  animation: spin-planet 25s linear infinite;
+}
+
+.planet-animation-reverse {
+  animation: spin-planet-reverse 35s linear infinite;
+}
+
+@keyframes spin-planet {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes spin-planet-reverse {
+  to {
+    rotate: -360deg;
   }
 }

@@ -1,5 +1,4 @@
 "use client";
-import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect";
 import React, { useEffect, useState } from "react";
 
 const StarsBackground = () => {
@@ -20,7 +19,7 @@ const StarsBackground = () => {
       height: window.innerHeight,
     });
   };
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
@@ -36,7 +35,7 @@ const StarsBackground = () => {
         const animationDelay = Math.random() * 150;
         return (
           <div
-            className="w-px h-px rounded-full bg-white absolute stars"
+            className="w-[1.2px] h-[1.2px] rounded-full bg-white absolute stars"
             key={star}
             style={{
               top: Math.round(Math.random() * (dimensions.height || 0)),

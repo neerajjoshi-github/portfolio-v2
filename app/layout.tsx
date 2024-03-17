@@ -1,13 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import {
-  Rock_Salt,
-  Bungee,
-  Ubuntu,
-  Rubik,
-  Creepster,
-  Bowlby_One_SC,
-} from "next/font/google";
+import { Rock_Salt, Rubik, Bowlby_One_SC, Lato } from "next/font/google";
 
 const rockSlat = Rock_Salt({
   subsets: ["latin"],
@@ -16,18 +9,18 @@ const rockSlat = Rock_Salt({
   weight: ["400"],
 });
 
-const cinzelDecorative = Bowlby_One_SC({
-  weight: ["400"],
+const lato = Lato({
   subsets: ["latin"],
-  variable: "--font-cinzel-decorative",
   display: "swap",
+  variable: "--font-lato",
+  weight: ["400", "700", "900"],
 });
 
-const ubuntu = Ubuntu({
+const bowlbyOneSC = Bowlby_One_SC({
   weight: ["400"],
   subsets: ["latin"],
+  variable: "--font-bowlby-one-sc",
   display: "swap",
-  variable: "--font-sometype-mono",
 });
 
 const rubik = Rubik({
@@ -50,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${rockSlat.variable} ${cinzelDecorative.variable} ${ubuntu.variable} ${rubik.variable}`}
+        className={`${rockSlat.variable} ${bowlbyOneSC.variable} ${rubik.variable} ${lato.className}`}
       >
         {children}
       </body>

@@ -13,9 +13,9 @@ const config: Config = {
       },
       fontFamily: {
         logo: ["var(--font-rock-salt)"],
-        heroText: ["var(--font-cinzel-decorative)"],
+        heroText: ["var(--font-bowlby-one-sc)"],
         sectionHeading: ["var(--font-rubik)"],
-        text: ["var(--font-sometype-mono)"],
+        text: ["var(--font-ubuntu)"],
       },
     },
   },

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import HeadingBackground from "../public/background/3.svg";
+import IconButton from "./IconButton";
 
 const ContactSection = () => {
   return (
@@ -22,7 +23,7 @@ const ContactSection = () => {
           </h2>
           <p className="text-sm sm:text-base md:text-lg">
             If you have a project in mind, I&rsquo;d love to hear about it.
-            Whether it&rsquo;s a new collaboration, job opportunity,or if you
+            Whether it&rsquo;s a new collaboration, job opportunity, or if you
             just want to say hello, feel free to reach out.
           </p>
           <div className="flex flex-col items-center">
@@ -39,18 +40,7 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="flex gap-10 items-center my-4">
-              <div className="flex flex-col items-center group cursor-pointer">
-                <Image
-                  width={56}
-                  height={56}
-                  src="/icons/github.svg"
-                  alt="Github Logo"
-                  className="group-hover:scale-110 group-hover:translate-y-1 transition duration-500"
-                />
-                <span className="text-sm font-medium text-zinc-300 group-hover:text-white">
-                  Github
-                </span>
-              </div>
+              <IconButton link="" icon="github" size="md" />
               <div className="hidden sm:flex flex-col gap-2 items-center">
                 <span className="text-lg underline underline-offset-3">
                   MAIL ME
@@ -63,18 +53,7 @@ const ContactSection = () => {
                   <span className="bg-white h-[2px] w-0 transition-all duration-500 absolute bottom-0 right-0 group-hover:w-1/2"></span>
                 </div>
               </div>
-              <div className="flex flex-col items-center group cursor-pointer">
-                <Image
-                  width={56}
-                  height={56}
-                  src="/icons/linkedin.svg"
-                  alt="Linkedin Logo"
-                  className="group-hover:scale-110 group-hover:translate-y-1 transition duration-500"
-                />
-                <span className="text-sm font-medium text-zinc-300 group-hover:text-white">
-                  Linkedin
-                </span>
-              </div>
+              <IconButton link="" icon="linkedin" size="md" />
             </div>
           </div>
 

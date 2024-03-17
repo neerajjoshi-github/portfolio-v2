@@ -1,24 +1,12 @@
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
-import GithubLogo from "../public/icons/github.svg";
-import Live from "../public/icons/live.svg";
-import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect";
+import React, { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/helpers/tailwind-utils";
+import IconButton from "./IconButton";
 
-const colors = [
-  "shadow-purple-300",
-  "shadow-sky-300",
-  "shadow-teal-300",
-  "shadow-blue-300",
-  "shadow-green-300",
-  "shadow-orange-400",
-  "shadow-red-300",
-  "shadow-neutral-300",
-];
-
-type Project = {
+export type Project = {
   name: string;
   description: string;
   technologies: string[];
@@ -34,12 +22,13 @@ type ProjectCardProps = {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const svgPath = useRef<SVGPathElement>(null);
   const projectCard = useRef<HTMLDivElement>(null);
-  const [color, setColor] = useState("bg-purple-300");
   const imageRef = useRef<HTMLImageElement | null>(null);
-  console.log(imageRef.current && imageRef.current.height);
-  useIsomorphicLayoutEffect(() => {
+  const boundingRef = useRef<DOMRect | null>(null);
+  const rotatingThreeD = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    let ctx = gsap.context(() => {
+    gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: projectCard.current,
@@ -50,42 +39,67 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       tl.from(projectCard.current, {
         y: 20,
         scale: 0.95,
-      })
-        .from(
-          "#project-description",
-          {
-            scaleX: 0.9,
-          },
-          0
-        )
-        .from(svgPath.current, {
-          strokeDashoffset: 1000,
-          duration: 1,
-          ease: "power2.in",
-        });
+      });
+
+      tl.from(
+        "#project-description",
+        {
+          scaleX: 0.9,
+        },
+        0
+      );
+
+      tl.from(svgPath.current, {
+        strokeDashoffset: 1000,
+        duration: 1,
+        ease: "power2.in",
+      });
     }, projectCard);
+  });
 
-    return () => {
-      ctx.revert();
-    };
-  }, []);
+  const handleMouseEnter = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    boundingRef.current = e.currentTarget.getBoundingClientRect();
+  };
 
-  useEffect(() => {
-    let currentIndex = 0;
-    const rotateColor = () => {
-      setColor(colors[currentIndex]);
-      currentIndex = (currentIndex + 1) % colors.length;
-    };
-    const intervalId = setInterval(rotateColor, 2000);
-    return () => clearInterval(intervalId);
-  }, []);
+  const handleMouseLeave = () => {
+    boundingRef.current = null;
+    gsap.to(rotatingThreeD.current, {
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!boundingRef.current) return;
+    const x = e.clientX - boundingRef.current.left;
+    const y = e.clientY - boundingRef.current.top;
+    const xPercentage = x / boundingRef.current.width;
+    const yPercentage = y / boundingRef.current.height;
+    const xRotation = (xPercentage - 0.5) * 20;
+    const yRotation = (0.5 - yPercentage) * 20;
+
+    gsap.to(rotatingThreeD.current, {
+      rotateX: yRotation,
+      rotateY: xRotation,
+      scale: 1.08,
+    });
+  };
 
   return (
     <div
       ref={projectCard}
-      className="group/main w-full relative flex flex-col max-lg:gap-8 max-lg:items-center even:lg:flex-row odd:lg:flex-row-reverse p-4"
+      className="[perspective:1000px] group/main w-full relative flex flex-col max-lg:gap-8 max-lg:items-center even:lg:flex-row odd:lg:flex-row-reverse p-4"
     >
-      <div className="relative rounded-md w-[95%] sm:w-[85%] lg:w-[55%] group">
+      <div
+        className="rotate-xy relative rounded-md w-[95%] sm:w-[85%] lg:w-[55%] group"
+        ref={rotatingThreeD}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
+      >
         <Image
           src={project.image}
           ref={imageRef}
@@ -99,8 +113,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             height: imageRef.current ? imageRef.current.height : 0,
             width: imageRef.current ? imageRef.current.width : 0,
           }}
-          className="absolute top-0 left-0 blur-lg gradient-animation"
-        ></div>
+          className="absolute top-0 left-0 gradient-animation"
+        />
       </div>
       <div className="flex-1 flex flex-col gap-4 lg:gap-6 items-center group-even/main:lg:items-end group-odd/main:lg:items-start justify-center">
         <h3 className="text-3xl sm:text-4xl font-semibold font-logo">
@@ -123,7 +137,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </h3>
         <p
           id="project-description"
-          className=" group-even/main:lg:-ml-8 group-odd/main:lg:-mr-8 z-[1] text-zinc-300 bg-slate-900/60 backdrop-blur-lg p-3 rounded-md text-sm sm:text-base"
+          className="group-even/main:lg:-ml-8 group-odd/main:lg:-mr-8 z-[1] text-zinc-300 bg-slate-900/60 backdrop-blur-lg p-3 rounded-md text-sm sm:text-base"
         >
           {project.description}
         </p>
@@ -133,26 +147,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           ))}
         </div>
         <div className="flex items-center gap-6">
-          <div className="flex flex-col gap-1 items-center">
-            <Image
-              src={GithubLogo}
-              width={48}
-              height={48}
-              alt="Github Logo"
-              className="cursor-pointer"
-            />
-            <span className="text-xs">Github</span>
-          </div>
-          <div className="flex flex-col gap-1 items-center">
-            <Image
-              src={Live}
-              width={48}
-              height={48}
-              alt="Live"
-              className="cursor-pointer"
-            />
-            <span className="text-xs">Live</span>
-          </div>
+          <IconButton link={project.github} icon="github" />
+          <IconButton link={project.live} icon="live" />
         </div>
       </div>
     </div>
