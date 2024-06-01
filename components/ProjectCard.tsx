@@ -91,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div
       ref={projectCard}
-      className="[perspective:1000px] group/main w-full relative flex flex-col max-lg:gap-8 max-lg:items-center even:lg:flex-row odd:lg:flex-row-reverse p-4"
+      className="[perspective:1000px] group/main w-full relative flex flex-col max-lg:gap-8 max-lg:items-center even:lg:flex-row odd:lg:flex-row-reverse"
     >
       <div
         className="rotate-xy relative rounded-md w-[95%] sm:w-[85%] lg:w-[55%] group"

@@ -43,8 +43,9 @@ const HeroSection = () => {
   const text = "Neeraj Joshi, and I bring web creations to life.";
   return (
     <section
-      id="hero"
-      className="h-[calc(100vh-64px)] w-full flex flex-col gap-3 justify-center px-6 relative"
+      id="home"
+      data-section
+      className="h-[calc(100vh-64px)] w-full flex flex-col gap-3 justify-center relative"
     >
       <h2
         ref={heroHeadingText}
@@ -83,7 +84,9 @@ const HeroSection = () => {
         className="translate-y-full opacity-0 flex gap-4 sm:gap-6 md:gap-8 items-center mt-6"
       >
         <Button asChild>
-          <Link href="">Resume</Link>
+          <Link href="/resume.pdf" target="_blank">
+            Resume
+          </Link>
         </Button>
         <Button asChild variant="outline">
           <Link href="mailto:joshineeraj7037@gmail.com">Mail Me</Link>

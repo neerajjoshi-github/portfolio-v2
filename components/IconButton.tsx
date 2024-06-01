@@ -3,14 +3,23 @@ import LinkIcon from "../public/icons/live.svg";
 import GithubIcon from "../public/icons/github.svg";
 import LinkedinIcon from "../public/icons/linkedin.svg";
 import Link from "next/link";
+import { cn } from "@/helpers/tailwind-utils";
 
 type IconButtonProps = {
   icon: "github" | "linkedin" | "live";
   link: string;
   size?: "sm" | "md";
+  className?: string;
+  showText?: boolean;
 };
 
-const IconButton: React.FC<IconButtonProps> = ({ icon, link, size = "sm" }) => {
+const IconButton: React.FC<IconButtonProps> = ({
+  icon,
+  link,
+  size = "sm",
+  className,
+  showText = true,
+}) => {
   const s = size === "sm" ? 48 : 56;
 
   const getIconUrl = (): string => {
@@ -24,8 +33,13 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, link, size = "sm" }) => {
   };
 
   return (
-    <button className="flex flex-col items-center group cursor-pointer">
-      <Link href={link}>
+    <button
+      className={cn(
+        `flex flex-col items-center group cursor-pointer text-zinc-300 group-hover:text-white font-medium`,
+        className
+      )}
+    >
+      <Link href={link} target="_blank">
         <Image
           width={s}
           height={s}
@@ -33,9 +47,7 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, link, size = "sm" }) => {
           alt="Github Logo"
           className="group-hover:scale-110 group-hover:translate-y-1 transition duration-500"
         />
-        <span className="capitalize text-sm font-medium text-zinc-300 group-hover:text-white">
-          {icon}
-        </span>
+        {showText && <span className="capitalize text-sm">{icon}</span>}
       </Link>
     </button>
   );

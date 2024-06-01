@@ -40,7 +40,7 @@ html.lenis {
 /* Stars Animation */
 
 .stars {
-  animation: animStar 150s linear infinite;
+  animation: animStar linear infinite;
 }
 
 @keyframes animStar {

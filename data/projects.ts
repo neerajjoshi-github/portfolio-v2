@@ -31,7 +31,7 @@ export const projects = [
     ],
     image: "/images/projects/conversify.png",
     github: "https://github.com/neerajjoshi-github/conversify",
-    live: "/not-yet-hosted",
+    live: "https://conversify-frontend.vercel.app/",
   },
   {
     name: "Reddit Clone",
@@ -44,6 +44,15 @@ export const projects = [
   },
 
   // Secondary
+  {
+    name: "Novus BloodBank",
+    description:
+      "Novus Blood Bank Management is a web application crafted to simplify blood-related data management fororganizations. ",
+    technologies: ["React", "Mongodb", "Tailwind Css", "Antd", "Node Js"],
+    image: "/images/projects/novus.png",
+    github: "https://github.com/neerajjoshi-github/Novus-BloodBank-Client",
+    live: "https://novus-blood-bank-client.vercel.app/",
+  },
 
   {
     name: "Type Swift",
@@ -54,14 +63,14 @@ export const projects = [
     github: "https://github.com/neerajjoshi-github/type-swift",
     live: "https://type-swift.vercel.app/",
   },
+
   {
-    name: "Novus BloodBank",
-    description:
-      " Novus Blood Bank Management is a web application meticulouslycrafted to simplify blood-related data management fororganizations. ",
-    technologies: ["React", "Mongodb", "Tailwind Css", "Antd", "Node Js"],
-    image: "/images/projects/novus.png",
-    github: "https://github.com/neerajjoshi-github/Novus-BloodBank-Client",
-    live: "https://novus-blood-bank-client.vercel.app/",
+    name: "Transcription and Subtitling Portfolio",
+    description: "Portfolio for a transcribing and subtitling service ",
+    technologies: ["React", "Tailwind Css", "Framer Motion"],
+    image: "/images/projects/transcription-portfolio.png",
+    github: "https://github.com/neerajjoshi-github/transcription-portfolio",
+    live: "https://transcription-portfolio.vercel.app/",
   },
   {
     name: "React Coding Challenge",

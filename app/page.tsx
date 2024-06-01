@@ -10,6 +10,7 @@ import StarsBackground from "@/components/StarsBackground";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Toaster } from "sonner";
 
 const Home = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const Home = () => {
   });
   return (
     <>
+      <Toaster />
       <StarsBackground />
       <Header />
       <div className="w-full flex flex-col items-center overflow-hidden relative">
@@ -72,7 +74,7 @@ const Home = () => {
             src="/images/hero/moons.png"
           />
         </div>
-        <div className="w-full max-w-[1200px] flex flex-col z-[1]">
+        <div className="w-full max-w-[1250px] px-4 flex flex-col z-[1]">
           <HeroSection />
           <AboutMeSection />
           <ProjectsSection />

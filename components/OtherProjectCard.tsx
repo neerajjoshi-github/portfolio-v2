@@ -11,10 +11,7 @@ type OtherProjectCardProps = {
 
 const OtherProjectCard: React.FC<OtherProjectCardProps> = ({ project }) => {
   return (
-    <div
-      id="other-project"
-      className="w-full rounded-xl relative bg-slate-950 "
-    >
+    <div id="other-project" className="w-full rounded-xl relative bg-slate-950">
       <Image
         src={project.image}
         width={400}

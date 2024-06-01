@@ -17,6 +17,9 @@ import FirebaseLogo from "../public/icons/firebase.svg";
 import Flower1 from "../public/flowers/1.svg";
 import Flower2 from "../public/flowers/2.svg";
 
+// Image
+import ProfileImage from "../public/images/about-me/profile-image.png";
+
 import HeadingBackground from "../public/background/2.svg";
 import { useGSAP } from "@gsap/react";
 
@@ -83,9 +86,10 @@ const AboutMeSection = () => {
   };
   return (
     <section
+      data-section
       ref={aboutSection}
       id="about"
-      className="py-20 px-6 w-full flex flex-col gap-4 relative"
+      className="py-20 w-full flex flex-col gap-4 relative"
       onMouseMove={mouseMoveHandler}
     >
       <h2 className="ml-auto group relative text-5xl md:text-8xl mb-2 font-black uppercase font-sectionHeading">
@@ -100,8 +104,16 @@ const AboutMeSection = () => {
         />
       </h2>
       <div className="flex flex-col lg:flex-row items-center gap-8">
-        <div className="w-full sm:w-fit h-fit relative flex flex-col gap-10 group">
-          <div className="w-full aspect-square sm:w-80 lg:w-96 max-w-[24rem] border-2 border-zinc-300 rounded-3xl"></div>
+        <div className="w-fit h-fit relative flex flex-col gap-10 group">
+          <div className="w-full overflow-hidden aspect-square sm:w-80 lg:w-96 max-w-[24rem] border-2 border-white rounded-3xl">
+            <Image
+              src={ProfileImage}
+              width={1080}
+              height={1080}
+              alt="Profile Image"
+              className=""
+            />
+          </div>
           <Image
             className="group-hover:-rotate-90 transition duration-300 absolute -top-2 -left-2"
             src={Flower1}
@@ -152,8 +164,8 @@ const AboutMeSection = () => {
             enjoyed my time crafting some truly remarkable projects.
           </p>
           <p className="text-zinc-300">
-            What I particularly cherish about this journey is how it&rsquo;s
-            allowed me to truly understand how technology works.
+            What I particularly appreciate about this journey is that it has
+            helped me understand the inner workings of technology.
           </p>
           {/* Placeholder */}
         </div>
